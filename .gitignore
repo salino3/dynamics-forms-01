@@ -1,0 +1,13 @@
+.env
+
+back/.env
+back/node_modules
+back/save-codes
+back/package-lock.json
+
+front/.env
+front/node_modules
+front-save-codes
+front/dist
+front/build
+front/package-lock.json

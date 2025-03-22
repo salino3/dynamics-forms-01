@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-const routerItems = require("./routes/items.routes");
+const routerItems = require("./routes/products.routes");
 const path = require("path");
 const morgan = require("morgan");
 const { PORT } = require("./config");
@@ -28,7 +28,7 @@ app.use(
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Routes
-app.use("/items", routerItems);
+app.use("/products", routerItems);
 
 //
 if (process.env.NODE_ENV === "production") {

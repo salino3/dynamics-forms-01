@@ -6,6 +6,10 @@ export const RenderElements: React.FC<{ item: any }> = ({ item }) => {
   let element: any = null;
 
   switch (item?.type) {
+    case "img":
+      element = <img src={item?.item?.img} alt={item?.name} />;
+      break;
+
     case "input":
       element = <input type="text" />;
       break;

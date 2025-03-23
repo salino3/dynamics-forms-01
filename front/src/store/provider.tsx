@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { useShallow } from "zustand/react/shallow";
 import { immer } from "zustand/middleware/immer";
 import { createJSONStorage, persist } from "zustand/middleware";
-import { PropsProvider } from "./interface";
+import { PropsProduct, PropsProvider } from "./interface";
 
 export const useProvider = create<PropsProvider>()(
   persist(
@@ -39,6 +39,11 @@ export const useProvider = create<PropsProvider>()(
           root.style.setProperty("--global-08", "#a0a5af");
           root.style.setProperty("--global-lines", "rgb(27, 27, 27)");
         }
+      },
+      setProducts: (product: PropsProduct) => {
+        set((state) => {
+          state.product = product;
+        });
       },
     })),
     {

@@ -1,6 +1,6 @@
 import "./render-elements.styles.scss";
 
-export const RenderElements: React.FC<{ item: any }> = ({ item }) => {
+export function fnRenderElements(item: any) {
   console.log("Item: ", item);
 
   let element: any = null;
@@ -14,12 +14,6 @@ export const RenderElements: React.FC<{ item: any }> = ({ item }) => {
       element = (
         <>
           <button>Confirm</button>
-
-          <p
-            dangerouslySetInnerHTML={{
-              __html: "<a href='https://example.com'>Click here</a>",
-            }}
-          />
         </>
       );
       break;
@@ -32,9 +26,5 @@ export const RenderElements: React.FC<{ item: any }> = ({ item }) => {
       element = null;
   }
 
-  return (
-    <div className="renderElement" key={item?.order}>
-      {element}
-    </div>
-  );
-};
+  return <div className="renderElement">{element}</div>;
+}

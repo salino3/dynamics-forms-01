@@ -46,6 +46,18 @@
     },
     {
       "order": 2,
+      "name": "2ax3",
+      "type": "label",
+      "style": "",
+      "item": {
+        "label": {
+          "en": "Welcome",
+          "es": "Bienvenido"
+        }
+      }
+    },
+    {
+      "order": 3,
       "name": "btn67",
       "type": "btnSubmit",
       "style": "",
@@ -54,6 +66,18 @@
         "label": {
           "en": "Confirm",
           "es": "Confirmar"
+        }
+      }
+    },
+    {
+      "order": 4,
+      "name": "2ax3",
+      "type": "label",
+      "style": "",
+      "item": {
+        "label": {
+          "en": "Fin",
+          "es": "Fin"
         }
       }
     }

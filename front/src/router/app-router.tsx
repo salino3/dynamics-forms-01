@@ -2,6 +2,7 @@ import React, { JSX } from "react";
 import { Routes, Route } from "react-router-dom";
 import { ContainerLayout } from "../layout";
 import { routesApp } from "./interface";
+import { HomePage } from "../pods";
 
 interface PropsRoutes {
   path: string;
@@ -13,7 +14,7 @@ export const AppRouter: React.FC = () => {
   const routes: PropsRoutes[] = [
     {
       path: routesApp?.root,
-      element: <>Root</>,
+      element: <HomePage />,
       visibility: "public",
     },
   ];

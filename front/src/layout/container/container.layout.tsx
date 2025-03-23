@@ -6,10 +6,5 @@ interface Props {
 }
 
 export const ContainerLayout: React.FC<Props> = ({ children }) => {
-  return (
-    <div className="rootContainerLayout">
-      <h1>Layout</h1>
-      <div>{children}</div>
-    </div>
-  );
+  return <div className="rootContainerLayout">{children}</div>;
 };

@@ -32,9 +32,5 @@ export const RenderElements: React.FC<{ item: any }> = ({ item }) => {
       element = null;
   }
 
-  return (
-    <div className="renderElement" key={item?.order}>
-      {element}
-    </div>
-  );
+  return <div className="renderElement">{element}</div>;
 };

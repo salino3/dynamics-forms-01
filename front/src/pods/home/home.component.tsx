@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { PropsProduct, useProviderSelector } from "../../store";
+import React, { useEffect, useMemo } from "react";
+import { useProviderSelector } from "../../store";
 import { ServicesApp } from "../../services";
 import { RenderElements } from "../../hooks";
 import "./home.styles.scss";
@@ -14,39 +14,59 @@ export const HomePage: React.FC = () => {
     ServicesApp?.fetchMockItems().then(
       (res) => setProducts && setProducts(res)
     );
-  }, []);
+  }, [setProducts]);
 
-  const list =
-    product && product?.items_list?.length > 0
-      ? [...product?.items_list].sort(
-          (a: { order: number }, b: { order: number }) => a?.order - b?.order
-        )
-      : [];
+  // Order and separate elements
+  const { headerItems, formItems, btnSubmitItem, footerItems } = useMemo(() => {
+    let headerItems: any[] = [];
+    let formItems: any[] = [];
+    let btnSubmitItem: any = undefined;
+    let footerItems: any[] = [];
 
-  const btnSubmit =
-    product && product?.items_list?.length > 0
-      ? [...product?.items_list].find((i: any) => i?.type === "btnSubmit")
-      : undefined;
+    if (product && product.items_list && product.items_list.length > 0) {
+      // deconstruct array and sorted
+      const sorted = [...product.items_list].sort(
+        (a: { order: number }, b: { order: number }) => a.order - b.order
+      );
+
+      sorted.forEach((item: any) => {
+        if (item.order < 0) {
+          headerItems.push(item);
+        } else if (item.order >= 0) {
+          if (item.type === "btnSubmit") {
+            btnSubmitItem = item;
+          } else if (!btnSubmitItem) {
+            formItems.push(item);
+          } else {
+            footerItems.push(item);
+          }
+        }
+      });
+    }
+    return { headerItems, formItems, btnSubmitItem, footerItems };
+  }, [product]);
 
   return (
     <div className="rootHomePage">
       <h1>Home page</h1>
-      <p>{product && product?.id}</p>
-      {list.map(
-        (item: any) => item?.order < 0 && <RenderElements item={item} />
-      )}
+      <p>{product && product.id}</p>
+
+      {headerItems.map((item) => (
+        <RenderElements key={item.order} item={item} />
+      ))}
+
       <form>
-        {list.map(
-          (item: any) =>
-            item?.order > 0 &&
-            item?.order < btnSubmit?.order && <RenderElements item={item} />
+        {formItems.map((item) => (
+          <RenderElements key={item.order} item={item} />
+        ))}
+        {btnSubmitItem && (
+          <RenderElements key={btnSubmitItem.order} item={btnSubmitItem} />
         )}
-        {<RenderElements item={btnSubmit} />}
       </form>
-      {list.map(
-        (item: any) =>
-          item?.order > btnSubmit?.order && <RenderElements item={item} />
-      )}
+
+      {footerItems.map((item) => (
+        <RenderElements key={item.order} item={item} />
+      ))}
     </div>
   );
 };

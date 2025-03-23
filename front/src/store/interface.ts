@@ -11,4 +11,5 @@ export interface PropsProduct {
 export interface PropsProvider {
   product: PropsProduct;
   theme: "dark" | "light";
+  changeGlobalColors(): void;
 }

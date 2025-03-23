@@ -1,5 +1,5 @@
 import React, { JSX } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { ContainerLayout } from "../layout";
 import { routesApp } from "./interface";
 import { HomePage } from "../pods";
@@ -15,6 +15,16 @@ export const AppRouter: React.FC = () => {
     {
       path: routesApp?.root,
       element: <HomePage />,
+      visibility: "public",
+    },
+    {
+      path: routesApp?.token,
+      element: <HomePage />,
+      visibility: "public",
+    },
+    {
+      path: routesApp?.error404,
+      element: <Navigate to={routesApp?.root} />,
       visibility: "public",
     },
   ];

@@ -26,7 +26,8 @@
     {
       "order": 0,
       "name": "form",
-      "style": ""
+      "style": "",
+      "type": "form"
     },
     {
       "order": 1,
@@ -46,7 +47,7 @@
     {
       "order": 2,
       "name": "btn67",
-      "type": "btn",
+      "type": "btnSubmit",
       "style": "",
       "item": {
         "type": "submit",

@@ -6,9 +6,12 @@
       "order": -2,
       "name": "xx2",
       "type": "img",
-      "style": "",
+      "style": "border: solid 2px blue; padding: 0.5rem;border-radius: 1rem;background: #0000ff33;",
+
       "item": {
-        "img": "feierionfroeifir"
+        "style": "max-width: 120px;border-radius: 1rem;",
+        "alt": "Aquila",
+        "href": "/assets/aguila-1.jpg"
       }
     },
     {
@@ -23,36 +26,100 @@
         }
       }
     },
-
     {
       "order": 1,
       "name": "2ds3",
       "type": "input",
       "style": "",
       "item": {
-        "requiered": true,
-        "regex": "",
-        "type": "string",
+        "requiered": false,
+
+        "regexList": [],
+        "name": "name",
+        "type": "text",
         "label": {
-          "en": "Welcome",
-          "es": "Bienvenido"
-        }
-      }
-    },
-    {
-      "order": 2,
-      "name": "2ax3",
-      "type": "label",
-      "style": "",
-      "item": {
-        "label": {
-          "en": "Welcome",
-          "es": "Bienvenido"
+          "en": "Name",
+          "es": "Nombre"
         }
       }
     },
     {
       "order": 3,
+      "name": "2ds3",
+      "type": "input",
+      "style": "",
+      "item": {
+        "requiered": true,
+        "requieredMessage": {
+          "es": "es requerido",
+          "en": "is requiered"
+        },
+        "regexList": [
+          {
+            "regex": "^.{4,12}$",
+            "errorMessage": {
+              "en": "Password must be between 4 and 12 characters.",
+              "es": "La contraseña debe tener entre 4 y 12 caracteres."
+            }
+          },
+          {
+            "regex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$",
+            "errorMessage": {
+              "en": "Password must contain at least one uppercase letter, one lowercase letter, and one number.",
+              "es": "La contraseña debe contener al menos una letra mayúscula, una minúscula y un número."
+            }
+          }
+        ],
+        "name": "password",
+        "type": "password",
+        "label": {
+          "en": "Password",
+          "es": "Contraseña"
+        }
+      }
+    },
+    {
+      "order": 2,
+      "name": "2ds3",
+      "type": "input",
+      "style": "",
+      "item": {
+        "requiered": true,
+        "requieredMessage": {
+          "es": "es requerido",
+          "en": "is requiered"
+        },
+        "regexList": [
+          {
+            "regex": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+            "errorMessage": {
+              "en": "Please enter a valid email address.",
+              "es": "Por favor ingrese una dirección de correo electrónico válida."
+            }
+          }
+        ],
+        "name": "email",
+        "type": "text",
+        "label": {
+          "en": "Email",
+          "es": "Correo eletrónico"
+        }
+      }
+    },
+    {
+      "order": 4,
+      "name": "2ax3",
+      "type": "label",
+      "style": "",
+      "item": {
+        "label": {
+          "en": "Test Label",
+          "es": "Test label"
+        }
+      }
+    },
+    {
+      "order": 5,
       "name": "btn67",
       "type": "btnSubmit",
       "style": "",
@@ -65,18 +132,18 @@
       }
     },
     {
-      "order": 4,
+      "order": 6,
       "name": "2ax3",
       "type": "label",
       "style": "",
       "item": {
         "label": {
-          "en": "Fin",
-          "es": "Fin"
+          "en": "Footer",
+          "es": "Pie de página"
         }
       }
     }
   ],
   "price": 5,
-  "general_styles": ""
+  "general_styles": "padding: 1rem;  border-radius: 1rem;"
 }

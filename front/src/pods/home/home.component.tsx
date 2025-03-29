@@ -56,7 +56,7 @@ export const HomePage: React.FC = () => {
 
       {headerItems.map((item) => fnRenderElements(item))}
       <FormHome
-        style={product?.general_styles}
+        product={product}
         formItems={formItems}
         btnSubmitItem={fnRenderElements(btnSubmitItem)}
       />

@@ -35,22 +35,26 @@ export const FormHome: React.FC<Props> = ({
 
     const errors: any = {};
 
-    const invalidFields = formItems.filter((item) => {
-      const fieldValue = formData?.[item.item.name];
-      const regex = new RegExp(item.item.regex);
+    const invalidFields = formItems.filter((prop) => {
+      const fieldValue = formData?.[prop.item.name];
 
-      if (item.item.requiered && !fieldValue) {
-        errors[item.item.name] = `${
-          item.item.label[language] || "en"
-        } is required`;
+      if (prop.item.requiered && !fieldValue) {
+        errors[prop.item.name] = `${prop.item.label[language] || "en"} ${
+          prop.item.requieredMessage[language] || "en"
+        }`;
         return true;
       }
 
-      if (item.item.regex && fieldValue && !regex.test(fieldValue)) {
-        errors[item.item.name] = `${
-          item.item.label?.en || item.item.label?.es
-        } is invalid`;
-        return true;
+      if (prop.item.regexList && Array.isArray(prop.item.regexList)) {
+        for (let i = 0; i < prop?.item?.regexList.length; i++) {
+          const { regex, errorMessage } = prop.item.regexList[i];
+          const regexTest = new RegExp(regex);
+
+          if (fieldValue && !regexTest.test(fieldValue)) {
+            errors[prop.item.name] = errorMessage[language];
+            return true;
+          }
+        }
       }
 
       return false;
@@ -73,7 +77,7 @@ export const FormHome: React.FC<Props> = ({
       return;
     }
 
-    console.log("FormData: ", formData);
+    alert(JSON.stringify(formData, null, 2));
   }
 
   return (

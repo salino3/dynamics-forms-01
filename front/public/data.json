@@ -33,7 +33,26 @@
       "style": "",
       "item": {
         "requiered": true,
-        "regex": "^.{6,}$",
+        "requieredMessage": {
+          "es": "es requerido",
+          "en": "is requiered"
+        },
+        "regexList": [
+          {
+            "regex": "^.{4,12}$",
+            "errorMessage": {
+              "en": "Password must be between 4 and 12 characters.",
+              "es": "La contraseña debe tener entre 4 y 12 caracteres."
+            }
+          },
+          {
+            "regex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$",
+            "errorMessage": {
+              "en": "Password must contain at least one uppercase letter, one lowercase letter, and one number.",
+              "es": "La contraseña debe contener al menos una letra mayúscula, una minúscula y un número."
+            }
+          }
+        ],
         "name": "password",
         "type": "password",
         "label": {
@@ -49,7 +68,19 @@
       "style": "",
       "item": {
         "requiered": true,
-        "regex": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+        "requieredMessage": {
+          "es": "es requerido",
+          "en": "is requiered"
+        },
+        "regexList": [
+          {
+            "regex": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+            "errorMessage": {
+              "en": "Please enter a valid email address.",
+              "es": "Por favor ingrese una dirección de correo electrónico válida."
+            }
+          }
+        ],
         "name": "email",
         "type": "string",
         "label": {
@@ -97,5 +128,5 @@
     }
   ],
   "price": 5,
-  "general_styles": "padding: 1rem;border: solid 1px gray; border-radius: 1rem;"
+  "general_styles": "padding: 1rem;  border-radius: 1rem;"
 }

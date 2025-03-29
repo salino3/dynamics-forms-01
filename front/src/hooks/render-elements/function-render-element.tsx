@@ -2,15 +2,16 @@ import React from "react";
 import { DivStyled, ImgStyled, InputStyled } from "../../common";
 import "./render-elements.styles.scss";
 
+let language = "en";
+
 export function fnRenderElements(
   props: any,
   formData?: any,
-  setFormData?: React.Dispatch<any>,
+  // setFormData?: React.Dispatch<any>,
   handleChange?: (event: any) => void,
   formDataError?: any
 ) {
   let element: any = null;
-  let language = "en";
 
   switch (props?.type) {
     case "img":

@@ -10,6 +10,8 @@ interface Props {
   product: PropsProduct | undefined;
 }
 
+let language = "en";
+
 export const FormHome: React.FC<Props> = ({
   formItems,
   btnSubmitItem,
@@ -31,7 +33,7 @@ export const FormHome: React.FC<Props> = ({
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event?.preventDefault();
 
-    const errors: any = {}; // Un objeto para almacenar los errores
+    const errors: any = {};
 
     const invalidFields = formItems.filter((item) => {
       const fieldValue = formData?.[item.item.name];
@@ -39,7 +41,7 @@ export const FormHome: React.FC<Props> = ({
 
       if (item.item.requiered && !fieldValue) {
         errors[item.item.name] = `${
-          item.item.label?.en || item.item.label?.es
+          item.item.label[language] || "en"
         } is required`;
         return true;
       }
@@ -81,13 +83,7 @@ export const FormHome: React.FC<Props> = ({
       id="FormHome"
     >
       {formItems.map((item) =>
-        fnRenderElements(
-          item,
-          formData,
-          setFormData,
-          handleChange,
-          formDataError
-        )
+        fnRenderElements(item, formData, handleChange, formDataError)
       )}
       {btnSubmitItem}
     </FormStyled>

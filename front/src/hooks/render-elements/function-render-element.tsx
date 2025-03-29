@@ -30,7 +30,7 @@ export function fnRenderElements(
           placeholder={props?.item?.label[language]}
           id={props?.item?.name}
           name={props?.item?.name}
-          value={formData && formData[props?.item?.name]}
+          value={(formData && formData[props?.item?.name]) || ""}
           onChange={handleChange}
           type={props?.item?.type}
         />

@@ -27,6 +27,11 @@ export const FormHome: React.FC<Props> = ({
       ...prevFormData,
       [name]: value,
     }));
+
+    setFormDataError((prev: any) => ({
+      ...prev,
+      [name]: "",
+    }));
   };
 
   //

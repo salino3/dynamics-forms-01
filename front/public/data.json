@@ -27,7 +27,24 @@
       }
     },
     {
-      "order": 2,
+      "order": 1,
+      "name": "2ds3",
+      "type": "input",
+      "style": "",
+      "item": {
+        "requiered": false,
+
+        "regexList": [],
+        "name": "name",
+        "type": "text",
+        "label": {
+          "en": "Name",
+          "es": "Nombre"
+        }
+      }
+    },
+    {
+      "order": 3,
       "name": "2ds3",
       "type": "input",
       "style": "",
@@ -62,7 +79,7 @@
       }
     },
     {
-      "order": 1,
+      "order": 2,
       "name": "2ds3",
       "type": "input",
       "style": "",
@@ -82,7 +99,7 @@
           }
         ],
         "name": "email",
-        "type": "string",
+        "type": "text",
         "label": {
           "en": "Email",
           "es": "Correo eletrónico"
@@ -90,7 +107,7 @@
       }
     },
     {
-      "order": 3,
+      "order": 4,
       "name": "2ax3",
       "type": "label",
       "style": "",

@@ -17,17 +17,6 @@ export const FormHome: React.FC<Props> = ({
 }) => {
   const [formData, setFormData] = useState<any>();
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event?.preventDefault();
-
-    for (let data in formData) {
-      if (!formData[data]) {
-        return;
-      }
-    }
-    console.log("FormData: ", formData);
-  }
-
   const handleChange = (event: any) => {
     const { name, value } = event.target;
 
@@ -36,6 +25,39 @@ export const FormHome: React.FC<Props> = ({
       [name]: value,
     }));
   };
+
+  //
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event?.preventDefault();
+
+    const requiredFields =
+      formItems
+        .filter((item: any) => item.type === "input" && item.item?.requiered)
+        .map((item: any) => item.item.name) || [];
+
+    const missingFields = requiredFields.filter(
+      (field: any) => !formData || !formData[field]
+    );
+
+    if (missingFields.length > 0) {
+      console.log("❌ Missing required fields:", missingFields);
+      alert(`Please fill in the required fields: ${missingFields.join(", ")}`);
+
+      const firstMissingField = document.getElementById(missingFields[0]);
+
+      if (firstMissingField) {
+        firstMissingField.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+        (firstMissingField as HTMLInputElement).focus();
+      }
+
+      return;
+    }
+
+    console.log("FormData: ", formData);
+  }
 
   return (
     <FormStyled

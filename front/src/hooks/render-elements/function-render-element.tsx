@@ -31,7 +31,6 @@ export function fnRenderElements(
           value={formData && formData[props?.item?.name]}
           onChange={handleChange}
           type={props?.item?.type}
-          // required={props?.item?.requiered}
         />
       );
       break;

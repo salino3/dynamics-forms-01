@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo } from "react";
 import { useProviderSelector } from "../../store";
 import { ServicesApp } from "../../services";
-import { RenderElements } from "../../hooks";
+import { fnRenderElements, RenderElements } from "../../hooks";
 import "./home.styles.scss";
 
 export const HomePage: React.FC = () => {
@@ -51,22 +51,16 @@ export const HomePage: React.FC = () => {
       <h1>Home page</h1>
       <p>{product && product.id}</p>
 
-      {headerItems.map((item) => (
-        <RenderElements key={item.order} item={item} />
-      ))}
+      {headerItems.map((item) => fnRenderElements(item))}
 
       <form>
-        {formItems.map((item) => (
-          <RenderElements key={item.order} item={item} />
-        ))}
+        {formItems.map((item) => fnRenderElements(item))}
         {btnSubmitItem && (
           <RenderElements key={btnSubmitItem.order} item={btnSubmitItem} />
         )}
       </form>
 
-      {footerItems.map((item) => (
-        <RenderElements key={item.order} item={item} />
-      ))}
+      {footerItems.map((item) => fnRenderElements(item))}
     </div>
   );
 };

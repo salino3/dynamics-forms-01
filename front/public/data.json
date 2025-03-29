@@ -6,9 +6,12 @@
       "order": -2,
       "name": "xx2",
       "type": "img",
-      "style": "",
+      "style": "border: solid 2px blue; padding: 1rem;border-radius: 1rem;background: #0000ff33;",
+
       "item": {
-        "img": "feierionfroeifir"
+        "style": "max-width: 400px;border-radius: 1rem;",
+        "alt": "Aquila",
+        "href": "/assets/aguila-1.jpg"
       }
     },
     {

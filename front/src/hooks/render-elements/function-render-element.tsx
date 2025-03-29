@@ -1,11 +1,22 @@
+import { DivStyled, ImgStyled } from "../../common";
 import "./render-elements.styles.scss";
 
-export function fnRenderElements(item: any) {
-  console.log("Item: ", item);
+export function fnRenderElements(props: any) {
+  console.log("Item: ", props);
 
   let element: any = null;
 
-  switch (item?.type) {
+  switch (props?.type) {
+    case "img":
+      element = (
+        <ImgStyled
+          src={props?.item?.href}
+          alt={props?.name}
+          $customStyle={props?.item?.style}
+        />
+      );
+      break;
+
     case "input":
       element = <input type="text" />;
       break;
@@ -14,17 +25,33 @@ export function fnRenderElements(item: any) {
       element = (
         <>
           <button>Confirm</button>
+
+          <p
+            dangerouslySetInnerHTML={{
+              __html: "<a href='https://example.com'>Click here</a>",
+            }}
+          />
         </>
       );
       break;
 
     case "label":
-      element = <label>{item?.item?.label?.en || item?.item?.label?.es}</label>;
+      element = (
+        <label>{props?.item?.label?.en || props?.item?.label?.es}</label>
+      );
       break;
 
     default:
       element = null;
   }
 
-  return <div className="renderElement">{element}</div>;
+  return (
+    <DivStyled
+      key={props?.order}
+      $customStyle={props?.style}
+      className="renderElement"
+    >
+      {element}
+    </DivStyled>
+  );
 }

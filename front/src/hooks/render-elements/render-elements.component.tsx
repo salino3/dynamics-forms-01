@@ -7,7 +7,7 @@ export const RenderElements: React.FC<{ item: any }> = ({ item }) => {
 
   switch (item?.type) {
     case "img":
-      element = <img src={item?.item?.img} alt={item?.name} />;
+      element = <img src={item?.item?.href} alt={item?.name} />;
       break;
 
     case "input":

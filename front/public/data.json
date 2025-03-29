@@ -6,10 +6,10 @@
       "order": -2,
       "name": "xx2",
       "type": "img",
-      "style": "border: solid 2px blue; padding: 1rem;border-radius: 1rem;background: #0000ff33;",
+      "style": "border: solid 2px blue; padding: 0.5rem;border-radius: 1rem;background: #0000ff33;",
 
       "item": {
-        "style": "max-width: 400px;border-radius: 1rem;",
+        "style": "max-width: 120px;border-radius: 1rem;",
         "alt": "Aquila",
         "href": "/assets/aguila-1.jpg"
       }
@@ -28,6 +28,22 @@
     },
 
     {
+      "order": 2,
+      "name": "2ds3",
+      "type": "input",
+      "style": "",
+      "item": {
+        "requiered": true,
+        "regex": "",
+        "name": "password",
+        "type": "password",
+        "label": {
+          "en": "Password",
+          "es": "Contraseña"
+        }
+      }
+    },
+    {
       "order": 1,
       "name": "2ds3",
       "type": "input",
@@ -35,27 +51,29 @@
       "item": {
         "requiered": true,
         "regex": "",
-        "type": "string",
+        "name": "email",
+
+        "type": "email",
         "label": {
-          "en": "Welcome",
-          "es": "Bienvenido"
-        }
-      }
-    },
-    {
-      "order": 2,
-      "name": "2ax3",
-      "type": "label",
-      "style": "",
-      "item": {
-        "label": {
-          "en": "Welcome",
-          "es": "Bienvenido"
+          "en": "Email",
+          "es": "Correo eletrónico"
         }
       }
     },
     {
       "order": 3,
+      "name": "2ax3",
+      "type": "label",
+      "style": "",
+      "item": {
+        "label": {
+          "en": "Test Label",
+          "es": "Test label"
+        }
+      }
+    },
+    {
+      "order": 5,
       "name": "btn67",
       "type": "btnSubmit",
       "style": "",
@@ -68,18 +86,18 @@
       }
     },
     {
-      "order": 4,
+      "order": 6,
       "name": "2ax3",
       "type": "label",
       "style": "",
       "item": {
         "label": {
-          "en": "Fin",
-          "es": "Fin"
+          "en": "Footer",
+          "es": "Pie de página"
         }
       }
     }
   ],
   "price": 5,
-  "general_styles": ""
+  "general_styles": "padding: 1rem;border: solid 1px gray; border-radius: 1rem;"
 }

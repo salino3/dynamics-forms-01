@@ -1,10 +1,15 @@
-import { DivStyled, ImgStyled } from "../../common";
+import React from "react";
+import { DivStyled, ImgStyled, InputStyled } from "../../common";
 import "./render-elements.styles.scss";
 
-export function fnRenderElements(props: any) {
-  console.log("Item: ", props);
-
+export function fnRenderElements(
+  props: any,
+  formData?: any,
+  setFormData?: React.Dispatch<any>,
+  handleChange?: (event: any) => void
+) {
   let element: any = null;
+  let language = "en";
 
   switch (props?.type) {
     case "img":
@@ -18,27 +23,28 @@ export function fnRenderElements(props: any) {
       break;
 
     case "input":
-      element = <input type="text" />;
+      element = (
+        <InputStyled
+          placeholder={props?.item?.label[language]}
+          id={props?.item?.name}
+          name={props?.item?.name}
+          value={formData && formData[props?.item?.name]}
+          onChange={handleChange}
+          type={props?.item?.type}
+        />
+      );
       break;
 
     case "btnSubmit":
       element = (
-        <>
-          <button>Confirm</button>
-
-          <p
-            dangerouslySetInnerHTML={{
-              __html: "<a href='https://example.com'>Click here</a>",
-            }}
-          />
-        </>
+        <button type={props?.item?.type}>
+          {props?.item?.label[language || "en"]}
+        </button>
       );
       break;
 
     case "label":
-      element = (
-        <label>{props?.item?.label?.en || props?.item?.label?.es}</label>
-      );
+      element = <label>{props?.item?.label[language || "en"]}</label>;
       break;
 
     default:
@@ -54,4 +60,12 @@ export function fnRenderElements(props: any) {
       {element}
     </DivStyled>
   );
+}
+
+{
+  /* <p
+dangerouslySetInnerHTML={{
+  __html: "<a href='https://example.com'>Click here</a>",
+}}
+/> */
 }

@@ -1,8 +1,6 @@
 import "./render-elements.styles.scss";
 
 export const RenderElements: React.FC<{ item: any }> = ({ item }) => {
-  console.log("Item: ", item);
-
   let element: any = null;
 
   switch (item?.type) {

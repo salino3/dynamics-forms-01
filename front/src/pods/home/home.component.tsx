@@ -3,6 +3,7 @@ import { useProviderSelector } from "../../store";
 import { ServicesApp } from "../../services";
 import { fnRenderElements, RenderElements } from "../../hooks";
 import "./home.styles.scss";
+import { FormHome } from "../components";
 
 export const HomePage: React.FC = () => {
   const { setProducts, product } = useProviderSelector(
@@ -48,18 +49,17 @@ export const HomePage: React.FC = () => {
 
   return (
     <div className="rootHomePage">
-      <h1>Home page</h1>
-      <p>{product && product.id}</p>
+      <div>
+        <h1>Home page</h1>
+        <p>Code: {product && product.id}</p>
+      </div>
 
       {headerItems.map((item) => fnRenderElements(item))}
-
-      <form>
-        {formItems.map((item) => fnRenderElements(item))}
-        {btnSubmitItem && (
-          <RenderElements key={btnSubmitItem.order} item={btnSubmitItem} />
-        )}
-      </form>
-
+      <FormHome
+        style={product?.general_styles}
+        formItems={formItems}
+        btnSubmitItem={fnRenderElements(btnSubmitItem)}
+      />
       {footerItems.map((item) => fnRenderElements(item))}
     </div>
   );

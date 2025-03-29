@@ -1,9 +1,9 @@
 import React, { useEffect, useMemo } from "react";
 import { useProviderSelector } from "../../store";
 import { ServicesApp } from "../../services";
-import { fnRenderElements, RenderElements } from "../../hooks";
-import "./home.styles.scss";
+import { fnRenderElements } from "../../hooks";
 import { FormHome } from "../components";
+import "./home.styles.scss";
 
 export const HomePage: React.FC = () => {
   const { setProducts, product } = useProviderSelector(

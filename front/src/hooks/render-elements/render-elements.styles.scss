@@ -1,0 +1,11 @@
+.renderElement {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  justify-content: center;
+  align-items: flex-start;
+
+  .smallErrorMessage {
+    color: red;
+  }
+}

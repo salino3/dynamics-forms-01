@@ -6,7 +6,8 @@ export function fnRenderElements(
   props: any,
   formData?: any,
   setFormData?: React.Dispatch<any>,
-  handleChange?: (event: any) => void
+  handleChange?: (event: any) => void,
+  formDataError?: any
 ) {
   let element: any = null;
   let language = "en";
@@ -58,6 +59,11 @@ export function fnRenderElements(
       className="renderElement"
     >
       {element}
+      {formDataError && formDataError[props?.item?.name] && (
+        <small className="smallErrorMessage">
+          {formDataError[props?.item?.name]}
+        </small>
+      )}
     </DivStyled>
   );
 }

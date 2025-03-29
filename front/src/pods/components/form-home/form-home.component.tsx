@@ -16,6 +16,7 @@ export const FormHome: React.FC<Props> = ({
   product,
 }) => {
   const [formData, setFormData] = useState<any>();
+  const [formDataError, setFormDataError] = useState<any>();
 
   const handleChange = (event: any) => {
     const { name, value } = event.target;
@@ -30,27 +31,41 @@ export const FormHome: React.FC<Props> = ({
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event?.preventDefault();
 
-    const requiredFields =
-      formItems
-        .filter((item: any) => item.type === "input" && item.item?.requiered)
-        .map((item: any) => item.item.name) || [];
+    const errors: any = {}; // Un objeto para almacenar los errores
 
-    const missingFields = requiredFields.filter(
-      (field: any) => !formData || !formData[field]
-    );
+    const invalidFields = formItems.filter((item) => {
+      const fieldValue = formData?.[item.item.name];
+      const regex = new RegExp(item.item.regex);
 
-    if (missingFields.length > 0) {
-      console.log("❌ Missing required fields:", missingFields);
-      alert(`Please fill in the required fields: ${missingFields.join(", ")}`);
+      if (item.item.requiered && !fieldValue) {
+        errors[item.item.name] = `${
+          item.item.label?.en || item.item.label?.es
+        } is required`;
+        return true;
+      }
 
-      const firstMissingField = document.getElementById(missingFields[0]);
+      if (item.item.regex && fieldValue && !regex.test(fieldValue)) {
+        errors[item.item.name] = `${
+          item.item.label?.en || item.item.label?.es
+        } is invalid`;
+        return true;
+      }
 
-      if (firstMissingField) {
-        firstMissingField.scrollIntoView({
+      return false;
+    });
+
+    setFormDataError(errors);
+
+    if (invalidFields.length > 0) {
+      const firstInvalidField = document.getElementById(
+        invalidFields[0]?.item.name
+      );
+      if (firstInvalidField) {
+        firstInvalidField.scrollIntoView({
           behavior: "smooth",
           block: "center",
         });
-        (firstMissingField as HTMLInputElement).focus();
+        (firstInvalidField as HTMLInputElement).focus();
       }
 
       return;
@@ -66,7 +81,13 @@ export const FormHome: React.FC<Props> = ({
       id="FormHome"
     >
       {formItems.map((item) =>
-        fnRenderElements(item, formData, setFormData, handleChange)
+        fnRenderElements(
+          item,
+          formData,
+          setFormData,
+          handleChange,
+          formDataError
+        )
       )}
       {btnSubmitItem}
     </FormStyled>

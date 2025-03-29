@@ -26,7 +26,6 @@
         }
       }
     },
-
     {
       "order": 2,
       "name": "2ds3",
@@ -34,7 +33,7 @@
       "style": "",
       "item": {
         "requiered": true,
-        "regex": "",
+        "regex": "^.{6,}$",
         "name": "password",
         "type": "password",
         "label": {
@@ -50,10 +49,9 @@
       "style": "",
       "item": {
         "requiered": true,
-        "regex": "",
+        "regex": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
         "name": "email",
-
-        "type": "email",
+        "type": "string",
         "label": {
           "en": "Email",
           "es": "Correo eletrónico"
